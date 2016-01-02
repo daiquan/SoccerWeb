@@ -18,9 +18,5 @@ namespace SoccerWeb.DataAccessLayer
         public DbSet<TeamLeagueRegistration> TeamRegistrations { get; set; }
         public DbSet<League> Leagues { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        }
     }
 }

@@ -171,6 +171,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeaguesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="DataAccessLayer\TeamLeagueContext.cs" />
+    <Compile Include="DataAccessLayer\TeamPlayerContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -181,6 +183,7 @@
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\PlayerTeamRegistration.cs" />
     <Compile Include="Models\Team.cs" />
+    <Compile Include="Models\TeamLeagueRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
