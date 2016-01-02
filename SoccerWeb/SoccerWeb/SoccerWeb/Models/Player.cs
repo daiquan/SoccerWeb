@@ -24,5 +24,8 @@ namespace SoccerWeb.Models
         public String TeamName { get; set; }
         [DisplayName("League")]
         public String LeagueName { get; set; }
+
+        // Navigation property holding the connection to the player's registered team
+        public virtual PlayerTeamRegistration PlayersTeam { get; set; }
     }
 }
