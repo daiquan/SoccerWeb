@@ -33,10 +33,10 @@ namespace SoccerWeb.DataAccessLayer
             var teamLeagueRegistrations = new List<TeamLeagueRegistration>
             {
             new TeamLeagueRegistration{TeamID=1,LeagueID=1},
-            new TeamLeagueRegistration{TeamID=1,LeagueID=2},
-            new TeamLeagueRegistration{TeamID=1,LeagueID=3},
-            new TeamLeagueRegistration{TeamID=2,LeagueID=4},
-            new TeamLeagueRegistration{TeamID=2,LeagueID=5}
+            new TeamLeagueRegistration{TeamID=2,LeagueID=1},
+            new TeamLeagueRegistration{TeamID=3,LeagueID=1},
+            new TeamLeagueRegistration{TeamID=4,LeagueID=2},
+            new TeamLeagueRegistration{TeamID=5,LeagueID=2}
             };
             teamLeagueRegistrations.ForEach(s => context.TeamRegistrations.Add(s));
             context.SaveChanges();

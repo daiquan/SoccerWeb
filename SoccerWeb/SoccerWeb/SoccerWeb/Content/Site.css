@@ -22,3 +22,8 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.bottom-footer {
+    position:fixed;
+    bottom:0;
+}

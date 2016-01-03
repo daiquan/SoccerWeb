@@ -16,7 +16,7 @@ namespace SoccerWeb.Models
 
         // Navigation properties
         //public virtual ICollection<PlayerTeamRegistration> Players { get; set; }
-        //[ForeignKey("TeamLeagueRegistrationID")]
-        public virtual ICollection<TeamLeagueRegistration> TeamsLeagues { get; set; }
+        [DisplayName("Registered League")]
+        public virtual TeamLeagueRegistration TeamsLeague { get; set; }
     }
 }

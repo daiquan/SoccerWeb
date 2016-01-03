@@ -17,6 +17,13 @@
         <dd>
             @Html.DisplayFor(model => model.TeamName)
         </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.TeamsLeague)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TeamsLeague.league.LeagueName)
+        </dd>
 
     </dl>
 </div>
