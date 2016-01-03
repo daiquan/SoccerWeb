@@ -10,7 +10,7 @@ namespace SoccerWeb.Models
     public class League
     {
         //[DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int TeamID { get; set; }
+        public int LeagueID { get; set; }
         [DisplayName("League")]
         public string LeagueName { get; set; }
 

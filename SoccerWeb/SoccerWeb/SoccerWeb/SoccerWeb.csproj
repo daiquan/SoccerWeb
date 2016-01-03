@@ -173,6 +173,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DataAccessLayer\TeamLeagueContext.cs" />
     <Compile Include="DataAccessLayer\TeamPlayerContext.cs" />
+    <Compile Include="DataAccessLayer\TeamRegistrationInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

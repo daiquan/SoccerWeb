@@ -9,7 +9,7 @@ namespace SoccerWeb.Models
     {
         public int RegistrationID { get; set; }
         public int TeamID { get; set; }
-        public int LeagueaID { get; set; }
+        public int LeagueID { get; set; }
 
         // Navigation properties holding connections to the player and the team
         public virtual League league { get; set; }
