@@ -6,7 +6,7 @@ using System.Data.Entity;
 using SoccerWeb.Models;
 using SoccerWeb.DataAccessLayer;
 
-namespace ContosoUniversity.DAL
+namespace SoccerWeb.DataAccessLayer
 {
     public class TeamRegistrationInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<TeamLeagueContext>
     {

@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SoccerWeb.Models
 {
     public class TeamLeagueRegistration
     {
-        public int RegistrationID { get; set; }
+        public int TeamLeagueRegistrationID { get; set; }
         public int TeamID { get; set; }
         public int LeagueID { get; set; }
 

@@ -7,7 +7,7 @@ namespace SoccerWeb.Models
 {
     public class PlayerTeamRegistration
     {
-        public int RegistrationID { get; set; }
+        public int PlayerTeamRegistrationID { get; set; }
         public int PlayerID { get; set; }
         public int TeamID { get; set; }
 

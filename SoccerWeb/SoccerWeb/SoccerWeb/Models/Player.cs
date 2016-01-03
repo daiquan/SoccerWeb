@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SoccerWeb.Models
 {
@@ -26,6 +27,7 @@ namespace SoccerWeb.Models
         public String LeagueName { get; set; }
 
         // Navigation property holding the connection to the player's registered team
+        //[ForeignKey("PlayerTeamRegistrationID")]
         public virtual PlayerTeamRegistration PlayersTeam { get; set; }
     }
 }
