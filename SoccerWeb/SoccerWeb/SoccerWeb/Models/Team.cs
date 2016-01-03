@@ -9,7 +9,7 @@ namespace SoccerWeb.Models
 {
     public class Team
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int TeamID { get; set; }
         [DisplayName("Team Name")]
         public string TeamName { get; set; }
