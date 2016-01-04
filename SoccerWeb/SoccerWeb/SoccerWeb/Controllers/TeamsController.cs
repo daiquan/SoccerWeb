@@ -39,7 +39,7 @@ namespace SoccerWeb.Controllers
         // GET: Teams/Create
         public ActionResult Create()
         {
-            return View();
+            return View("Create");
         }
 
         // POST: Teams/Create
