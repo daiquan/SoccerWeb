@@ -10,18 +10,13 @@ namespace SoccerWeb.ModelServices
 {
     public interface ITeamService
     {
-        ActionResult Index();
-        ActionResult Details(int? id);
-        ActionResult Create();
-        ActionResult Create(Team team);
-        ActionResult Edit(int? id);
-        ActionResult Edit(Team team);
-        ActionResult Delete(int? id);
-        ActionResult DeleteConfirmed(int id);
-        ActionResult Dispose(bool disposing);
+        Team GetTeamById(int id);
+        IEnumerable<Team> GetTeamList();
+        void CreateTeam(Team team);
+        void UpdateTeam(Team team);
+        void DeleteTeam(int id);
+        void DisposeDb(bool diposing);
     }
 
-    //public class TeamService : ITeamService
-    //{
-    //}
+
 }
