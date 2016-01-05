@@ -5,12 +5,15 @@ using System.Web.Mvc;
 namespace SoccerWeb.Tests.Controllers
 {
     [TestClass]
-    public class TeamsControllerTest
+    public class TeamsControllerTest : TestBase
     {
+
         [TestMethod]
         public void Index()
         {
-            TeamsController controller = new TeamsController();
+            // Arrange
+            HomeController controller = Resolve<HomeController>();
+
             // Act
             ViewResult result = controller.Index() as ViewResult;
 

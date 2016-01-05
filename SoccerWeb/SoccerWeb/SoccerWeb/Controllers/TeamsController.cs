@@ -15,7 +15,13 @@ namespace SoccerWeb.Controllers
     public class TeamsController : Controller
     {
         private TeamLeagueContext db = new TeamLeagueContext();
-        private ITeamService _teamservice = new TeamService();
+        //private ITeamService _teamservice = new TeamService();
+
+        private ITeamService _teamservice;
+        public TeamsController(ITeamService teamservice)
+        {
+            _teamservice = teamservice;
+        }
 
         // GET: Teams
         public ActionResult Index()
