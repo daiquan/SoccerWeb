@@ -8,13 +8,14 @@ namespace SoccerWeb.Tests.Controllers
     public class TeamsControllerTest
     {
         [TestMethod]
-        public void Create()
+        public void Index()
         {
-            var tc = new TeamsController();
+            TeamsController controller = new TeamsController();
+            // Act
+            ViewResult result = controller.Index() as ViewResult;
 
-            var result = (ViewResult)tc.Create();
-
-            Assert.AreEqual("Create", result.ViewName);
+            // Assert
+            Assert.IsNotNull(result);
         }
     }
 }

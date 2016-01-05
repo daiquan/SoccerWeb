@@ -8,17 +8,20 @@ using System.Web;
 using System.Web.Mvc;
 using SoccerWeb.DataAccessLayer;
 using SoccerWeb.Models;
+using SoccerWeb.ModelServices;
 
 namespace SoccerWeb.Controllers
 {
     public class TeamsController : Controller
     {
         private TeamLeagueContext db = new TeamLeagueContext();
+        private ITeamService _teamservice = new TeamService();
 
         // GET: Teams
         public ActionResult Index()
         {
-            return View(db.Teams.ToList());
+            ICollection<Team> teams = _teamservice.GetTeamList();
+            return View(teams.ToList());
         }
 
         // GET: Teams/Details/5
