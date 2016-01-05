@@ -7,9 +7,16 @@ using SoccerWeb.Models;
 namespace SoccerWeb.Tests.Controllers
 {
     [TestClass]
-    public class TeamServiceTest
+    public class TeamServiceTest : TestBase
     {
-        private ITeamService _teamService = new TeamService();
+        //private ITeamService _teamService = new TeamService();
+
+        private ITeamService _teamService;
+        [TestInitialize]
+        public void Startup()
+        {
+            _teamService = Resolve<ITeamService>();
+        }
 
         //[TestMethod]
         //public void GetEmptyTeamList()
