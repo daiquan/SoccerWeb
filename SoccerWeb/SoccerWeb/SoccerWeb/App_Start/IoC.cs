@@ -5,6 +5,7 @@ using System.Web.Routing;
 using Castle.MicroKernel;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
+using SoccerWeb.Installers;
 
 namespace SoccerWeb
 {

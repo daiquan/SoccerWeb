@@ -189,6 +189,7 @@
     </Compile>
     <Compile Include="Installers\ControllerInstaller.cs" />
     <Compile Include="Installers\RepositoryInstaller.cs" />
+    <Compile Include="Installers\PersistenceInstaller.cs" />
     <Compile Include="Installers\ServiceInstaller.cs" />
     <Compile Include="ModelServices\TeamService.cs" />
     <Compile Include="Models\AccountViewModels.cs" />

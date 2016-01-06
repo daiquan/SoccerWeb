@@ -26,6 +26,12 @@ namespace SoccerWeb.ModelServices
         }
 
 
+        //private TeamLeagueContext _db;
+        //public TeamService(TeamLeagueContext db)
+        //{
+        //    _db = db;
+        //}
+
         public Team GetTeamById(int id)
         {
             return new Team();
