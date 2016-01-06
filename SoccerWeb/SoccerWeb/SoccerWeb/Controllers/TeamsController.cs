@@ -18,6 +18,8 @@ namespace SoccerWeb.Controllers
         //private ITeamService _teamservice = new TeamService();
 
         private ITeamService _teamservice;
+
+
         public TeamsController(ITeamService teamservice)
         {
             _teamservice = teamservice;

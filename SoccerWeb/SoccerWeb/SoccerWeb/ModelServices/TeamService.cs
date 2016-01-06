@@ -1,11 +1,9 @@
-﻿using System;
+﻿using SoccerWeb.Repositories;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using SoccerWeb.DataAccessLayer;
 using SoccerWeb.Models;
-using System.Data.Entity;
-using System.Web.Mvc;
+
 
 namespace SoccerWeb.ModelServices
 {
@@ -22,6 +20,11 @@ namespace SoccerWeb.ModelServices
     public class TeamService : ITeamService
     {
         private TeamLeagueContext db = new TeamLeagueContext();
+        private IRepository<Team> _repo;
+        public TeamService(IRepository<Team> repo) {
+            _repo = repo;
+        }
+
 
         public Team GetTeamById(int id)
         {
@@ -30,23 +33,10 @@ namespace SoccerWeb.ModelServices
 
         public ICollection<Team> GetTeamList()
         {
-            // Return an empty Team list
-            //ICollection<Team> tmp = new List<Team>();
-            //return tmp;
-
-            // Return a manually initialized list
-            //var teams = new List<Team>
-            //{
-            //new Team{TeamName="Arsenal"},
-            //new Team{TeamName="Chelsea"},
-            //new Team{TeamName="Guoan"},
-            //new Team{TeamName="Real Madrid"},
-            //new Team{TeamName="Barca"}
-            //};
-            //return teams;
 
             // Return the Team list from the database
-            return db.Teams.ToList();
+            //return db.Teams.ToList();
+            return _repo.Get().ToList();
         }
 
         public void CreateTeam(Team team)
