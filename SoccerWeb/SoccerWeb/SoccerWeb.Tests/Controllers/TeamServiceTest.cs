@@ -16,22 +16,24 @@ namespace SoccerWeb.Tests.Controllers
             _teamService = Resolve<ITeamService>();
         }
 
-        //[TestMethod]
-        //public void GetEmptyTeamList()
-        //{
-        //    Assert.AreEqual(_teamService.GetTeamList().Count, 0);
-        //}
-
-        //[TestMethod]
-        //public void GetManuallyInitializedTeamList()
-        //{
-        //    Assert.AreEqual(_teamService.GetTeamList().Count, 5);
-        //}
-
         [TestMethod]
         public void GetDatabaseTeamList()
         {
             Assert.AreEqual(_teamService.GetTeamList().Count, 5);
+        }
+
+        [TestMethod]
+        public void TestTeamIdUsingGetTeamById()
+        {
+            Team team = _teamService.GetTeamById(1);
+            Assert.AreEqual(team.TeamID, 1);
+        }
+
+        [TestMethod]
+        public void TestTeamNameUsingGetTeamById()
+        {
+            Team team = _teamService.GetTeamById(1);
+            Assert.AreEqual(team.TeamName, "Arsenal");
         }
     }
 }

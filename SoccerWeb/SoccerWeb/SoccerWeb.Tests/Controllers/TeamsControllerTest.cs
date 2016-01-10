@@ -12,10 +12,23 @@ namespace SoccerWeb.Tests.Controllers
         public void Index()
         {
             // Arrange
-            HomeController controller = Resolve<HomeController>();
+            TeamsController controller = Resolve<TeamsController>();
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void Details()
+        {
+            // Arrange
+            TeamsController controller = Resolve<TeamsController>();
+
+            // Act
+            ViewResult result = controller.Details(1) as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);

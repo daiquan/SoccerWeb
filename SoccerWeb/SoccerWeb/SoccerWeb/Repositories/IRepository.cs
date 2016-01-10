@@ -8,34 +8,53 @@ namespace SoccerWeb.Repositories
     public interface IRepository<T> where T : class
     {
         IQueryable<T> Get();
-        int Add(T obj);
-        bool Update(T obj);
-        bool Delete(int Id);
+        T GetById(int id);
+        void Add(T obj);
+        void Update();
+        void Delete(int Id);
+        void Dispose();
     }
 
     public class SqlRepository<T> : IRepository<T> where T : class
     {
         private TeamLeagueContext _entities = new TeamLeagueContext();
+        private readonly IDbSet<T> teamsSet;
 
-        public virtual int Add(T obj)
+        public SqlRepository ()
         {
-            throw new NotImplementedException();
+            teamsSet = _entities.Set<T>();
         }
 
-        public virtual bool Delete(int Id)
+        public virtual T GetById(int id)
         {
-            throw new NotImplementedException();
+            return teamsSet.Find(id);
+        }
+
+        public virtual void Add(T obj)
+        {
+            teamsSet.Add(obj);
+        }
+
+        public virtual void Delete(int Id)
+        {
+            T item = GetById(Id);
+            teamsSet.Remove(item);
+            Update();
         }
 
         public virtual IQueryable<T> Get()
         {
-            IQueryable<T> query = _entities.Set<T>();
-            return query;
+            return teamsSet;
         }
 
-        public virtual bool Update(T obj)
+        public virtual void Update()
         {
-            throw new NotImplementedException();
+            _entities.SaveChanges();
+        }
+
+        public virtual void Dispose()
+        {
+            _entities.Dispose();
         }
     }
 

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using SoccerWeb.DataAccessLayer;
 using SoccerWeb.Models;
-
+using System.Data.Entity.Infrastructure;
+using System.Web.Mvc;
 
 namespace SoccerWeb.ModelServices
 {
@@ -14,12 +15,13 @@ namespace SoccerWeb.ModelServices
         void CreateTeam(Team team);
         void UpdateTeam(Team team);
         void DeleteTeam(int id);
-        void DisposeDb(bool diposing);
+        void DisposeDb();
+        //ICollection<League> GetLeagueList();
     }
 
     public class TeamService : ITeamService
     {
-        private TeamLeagueContext db = new TeamLeagueContext();
+        //private TeamLeagueContext db = new TeamLeagueContext();
         private IRepository<Team> _repo;
         public TeamService(IRepository<Team> repo) {
             _repo = repo;
@@ -34,7 +36,7 @@ namespace SoccerWeb.ModelServices
 
         public Team GetTeamById(int id)
         {
-            return new Team();
+            return _repo.GetById(id);
         }
 
         public ICollection<Team> GetTeamList()
@@ -47,7 +49,7 @@ namespace SoccerWeb.ModelServices
 
         public void CreateTeam(Team team)
         {
-
+            _repo.Add(team);
         }
 
         public void UpdateTeam(Team team)
@@ -57,12 +59,20 @@ namespace SoccerWeb.ModelServices
 
         public void DeleteTeam(int id)
         {
-
+            _repo.Delete(id);
         }
 
-        public void DisposeDb(bool diposing)
+        public void DisposeDb()
         {
-
+            _repo.Dispose();
         }
+
+        //public ICollection<League> GetLeagueList()
+        //{
+        //    var LeaguesQuery = from d in db.Leagues
+        //                           orderby d.LeagueName
+        //                           select d;
+        //    return LeaguesQuery.ToList<League>();
+        //}
     }
 }

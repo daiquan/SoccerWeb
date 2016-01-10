@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using SoccerWeb.DataAccessLayer;
 using SoccerWeb.Models;
 using SoccerWeb.ModelServices;
+using System.Data.Entity.Infrastructure;
 
 namespace SoccerWeb.Controllers
 {
@@ -39,7 +40,7 @@ namespace SoccerWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Team team = db.Teams.Find(id);
+            Team team = _teamservice.GetTeamById(id.GetValueOrDefault());
             if (team == null)
             {
                 return HttpNotFound();
@@ -58,15 +59,14 @@ namespace SoccerWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TeamID,TeamName")] Team team)
+        public ActionResult Create([Bind(Include = "TeamID,TeamName,LeagueID")] Team team)
         {
             if (ModelState.IsValid)
             {
-                db.Teams.Add(team);
-                db.SaveChanges();
+                _teamservice.CreateTeam(team);
                 return RedirectToAction("Index");
             }
-
+            //PopulateLeaguesDropDownList();
             return View(team);
         }
 
@@ -77,7 +77,7 @@ namespace SoccerWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Team team = db.Teams.Find(id);
+            Team team = _teamservice.GetTeamById(id.GetValueOrDefault());
             if (team == null)
             {
                 return HttpNotFound();
@@ -108,7 +108,7 @@ namespace SoccerWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Team team = db.Teams.Find(id);
+            Team team = _teamservice.GetTeamById(id.GetValueOrDefault());
             if (team == null)
             {
                 return HttpNotFound();
@@ -121,9 +121,7 @@ namespace SoccerWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Team team = db.Teams.Find(id);
-            db.Teams.Remove(team);
-            db.SaveChanges();
+            _teamservice.DeleteTeam(id);
             return RedirectToAction("Index");
         }
 
@@ -131,9 +129,15 @@ namespace SoccerWeb.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _teamservice.DisposeDb();
             }
             base.Dispose(disposing);
         }
+
+        //private void PopulateLeaguesDropDownList(object selected = null)
+        //{
+        //    var leagues = _teamservice.GetLeagueList();
+        //    ViewBag.DepartmentID = new SelectList(leagues, "LeagueID", "LeagueName", selected);
+        //}
     }
 }
