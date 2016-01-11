@@ -14,7 +14,7 @@ namespace SoccerWeb.Repositories
         void Delete(int Id);
     }
 
-    public class SqlRepository<T> : IRepository<T> where T : class
+    public class SqlRepository<T> : IRepository<T> where T : class, new()
     {
         private TeamLeagueContext _entities = new TeamLeagueContext();
         private readonly IDbSet<T> teamsSet;
