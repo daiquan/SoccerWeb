@@ -15,7 +15,6 @@ namespace SoccerWeb.ModelServices
         void CreateTeam(Team team);
         void UpdateTeam(Team team);
         void DeleteTeam(int id);
-        void DisposeDb();
         //ICollection<League> GetLeagueList();
     }
 
@@ -60,11 +59,6 @@ namespace SoccerWeb.ModelServices
         public void DeleteTeam(int id)
         {
             _repo.Delete(id);
-        }
-
-        public void DisposeDb()
-        {
-            _repo.Dispose();
         }
 
         //public ICollection<League> GetLeagueList()

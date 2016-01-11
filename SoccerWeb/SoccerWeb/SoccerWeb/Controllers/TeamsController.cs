@@ -124,20 +124,5 @@ namespace SoccerWeb.Controllers
             _teamservice.DeleteTeam(id);
             return RedirectToAction("Index");
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                _teamservice.DisposeDb();
-            }
-            base.Dispose(disposing);
-        }
-
-        //private void PopulateLeaguesDropDownList(object selected = null)
-        //{
-        //    var leagues = _teamservice.GetLeagueList();
-        //    ViewBag.DepartmentID = new SelectList(leagues, "LeagueID", "LeagueName", selected);
-        //}
     }
 }
