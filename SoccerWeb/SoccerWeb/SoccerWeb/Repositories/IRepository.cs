@@ -12,7 +12,6 @@ namespace SoccerWeb.Repositories
         void Add(T obj);
         void Update();
         void Delete(int Id);
-        void Dispose();
     }
 
     public class SqlRepository<T> : IRepository<T> where T : class
@@ -23,6 +22,7 @@ namespace SoccerWeb.Repositories
         public SqlRepository ()
         {
             teamsSet = _entities.Set<T>();
+            _entities = _entities ?? new TeamLeagueContext();
         }
 
         public virtual T GetById(int id)
@@ -50,11 +50,6 @@ namespace SoccerWeb.Repositories
         public virtual void Update()
         {
             _entities.SaveChanges();
-        }
-
-        public virtual void Dispose()
-        {
-            _entities.Dispose();
         }
     }
 
