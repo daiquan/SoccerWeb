@@ -103,6 +103,8 @@
     <Compile Include="Controllers\TeamsControllerTest.cs" />
     <Compile Include="Controllers\TeamServiceTest.cs" />
     <Compile Include="Controllers\TestBase.cs" />
+    <Compile Include="Fake\FakeSqlRepository.cs" />
+    <Compile Include="Installers\FakeRepositoryInstaller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>

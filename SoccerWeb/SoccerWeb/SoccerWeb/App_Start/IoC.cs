@@ -35,7 +35,7 @@ namespace SoccerWeb
         private static IWindsorContainer container;
         public static IWindsorContainer InitIoC()
         {
-            container = new WindsorContainer().Install(FromAssembly.InThisApplication());
+            container = new WindsorContainer().Install(FromAssembly.This());
             return container;
         }
         public static void ConfigureIoC()
