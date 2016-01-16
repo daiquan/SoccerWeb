@@ -12,17 +12,6 @@ namespace SoccerWeb.DataAccessLayer
     {
         protected override void Seed(TeamLeagueContext context)
         {
-            var teams = new List<Team>
-            {
-            new Team{TeamName="Arsenal"},
-            new Team{TeamName="Chelsea"},
-            new Team{TeamName="Guoan"},
-            new Team{TeamName="Real Madrid"},
-            new Team{TeamName="Barca"}
-            };
-
-            teams.ForEach(s => context.Teams.Add(s));
-            context.SaveChanges();
             var leagues = new List<League>
             {
             new League{LeagueName="Pro League"},
@@ -30,6 +19,18 @@ namespace SoccerWeb.DataAccessLayer
             };
             leagues.ForEach(s => context.Leagues.Add(s));
             context.SaveChanges();
+
+            var teams = new List<Team>
+            {
+            new Team{TeamName="Arsenal", LeagueID=leagues.Single(s => s.LeagueName == "Pro League").LeagueID},
+            new Team{TeamName="Chelsea", LeagueID=leagues.Single(s => s.LeagueName == "Pro League").LeagueID},
+            new Team{TeamName="Guoan", LeagueID=leagues.Single(s => s.LeagueName == "Pro League").LeagueID},
+            new Team{TeamName="Real Madrid", LeagueID=leagues.Single(s => s.LeagueName == "Happy League").LeagueID},
+            new Team{TeamName="Barca", LeagueID=leagues.Single(s => s.LeagueName == "Happy League").LeagueID}
+            };
+            teams.ForEach(s => context.Teams.Add(s));
+            context.SaveChanges();
+
             var teamLeagueRegistrations = new List<TeamLeagueRegistration>
             {
             new TeamLeagueRegistration{TeamID=1,LeagueID=1},

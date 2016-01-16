@@ -13,6 +13,7 @@ namespace SoccerWeb.Models
         public int TeamID { get; set; }
         [DisplayName("Team Name")]
         public string TeamName { get; set; }
+        public int LeagueID { get; set; }
 
         // Navigation properties
         //public virtual ICollection<PlayerTeamRegistration> Players { get; set; }
