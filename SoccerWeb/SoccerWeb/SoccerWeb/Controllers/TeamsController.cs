@@ -51,6 +51,7 @@ namespace SoccerWeb.Controllers
         // GET: Teams/Create
         public ActionResult Create()
         {
+            PopulateLeaguesDropDownList();
             return View("Create");
         }
 
@@ -66,7 +67,7 @@ namespace SoccerWeb.Controllers
                 _teamservice.CreateTeam(team);
                 return RedirectToAction("Index");
             }
-            //PopulateLeaguesDropDownList();
+            PopulateLeaguesDropDownList(team.LeagueID);
             return View(team);
         }
 
@@ -123,6 +124,14 @@ namespace SoccerWeb.Controllers
         {
             _teamservice.DeleteTeam(id);
             return RedirectToAction("Index");
+        }
+
+        private void PopulateLeaguesDropDownList(object selectedLeague = null)
+        {
+            var leaguesQuery = from d in db.Leagues
+                                   orderby d.LeagueName
+                                   select d;
+            ViewBag.LeagueID = new SelectList(leaguesQuery, "LeagueID", "LeagueName", selectedLeague);
         }
     }
 }

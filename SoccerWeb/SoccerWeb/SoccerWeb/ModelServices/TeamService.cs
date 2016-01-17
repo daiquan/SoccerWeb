@@ -49,6 +49,7 @@ namespace SoccerWeb.ModelServices
         public void CreateTeam(Team team)
         {
             _repo.Add(team);
+            _repo.Update();
         }
 
         public void UpdateTeam(Team team)
