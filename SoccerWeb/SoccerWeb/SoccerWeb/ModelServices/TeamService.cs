@@ -15,23 +15,16 @@ namespace SoccerWeb.ModelServices
         void CreateTeam(Team team);
         void UpdateTeam(Team team);
         void DeleteTeam(int id);
-        //ICollection<League> GetLeagueList();
     }
 
     public class TeamService : ITeamService
     {
-        //private TeamLeagueContext db = new TeamLeagueContext();
         private IRepository<Team> _repo;
-        public TeamService(IRepository<Team> repo) {
+        private IRepository<TeamLeagueRegistration> _repoRegistration;
+        public TeamService(IRepository<Team> repo, IRepository<TeamLeagueRegistration> repoRegistration) {
             _repo = repo;
+            _repoRegistration = repoRegistration;
         }
-
-
-        //private TeamLeagueContext _db;
-        //public TeamService(TeamLeagueContext db)
-        //{
-        //    _db = db;
-        //}
 
         public Team GetTeamById(int id)
         {
@@ -40,9 +33,6 @@ namespace SoccerWeb.ModelServices
 
         public ICollection<Team> GetTeamList()
         {
-
-            // Return the Team list from the database
-            //return db.Teams.ToList();
             return _repo.Get().ToList();
         }
 
@@ -50,6 +40,8 @@ namespace SoccerWeb.ModelServices
         {
             _repo.Add(team);
             _repo.Update();
+            _repoRegistration.Add(new TeamLeagueRegistration { TeamID = team.TeamID, LeagueID = team.LeagueID });
+            _repoRegistration.Update();
         }
 
         public void UpdateTeam(Team team)
@@ -61,13 +53,5 @@ namespace SoccerWeb.ModelServices
         {
             _repo.Delete(id);
         }
-
-        //public ICollection<League> GetLeagueList()
-        //{
-        //    var LeaguesQuery = from d in db.Leagues
-        //                           orderby d.LeagueName
-        //                           select d;
-        //    return LeaguesQuery.ToList<League>();
-        //}
     }
 }

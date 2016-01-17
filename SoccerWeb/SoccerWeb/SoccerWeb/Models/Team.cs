@@ -19,5 +19,6 @@ namespace SoccerWeb.Models
         //public virtual ICollection<PlayerTeamRegistration> Players { get; set; }
         [DisplayName("Registered League")]
         public virtual TeamLeagueRegistration TeamsLeague { get; set; }
+        public virtual League League { get; set; }
     }
 }
