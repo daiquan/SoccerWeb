@@ -39,19 +39,23 @@ namespace SoccerWeb.ModelServices
         public void CreateTeam(Team team)
         {
             _repo.Add(team);
-            _repo.Update();
             _repoRegistration.Add(new TeamLeagueRegistration { TeamID = team.TeamID, LeagueID = team.LeagueID });
-            _repoRegistration.Update();
+            //_repoRegistration.Save();
+            _repo.Save();
         }
 
         public void UpdateTeam(Team team)
         {
-
+            _repo.Update(team);
         }
 
         public void DeleteTeam(int id)
         {
             _repo.Delete(id);
+            //_repo.Save();
+            _repoRegistration.Delete(id);
+            //_repo.Save();
+            //_repoRegistration.Save();
         }
     }
 }

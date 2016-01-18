@@ -28,7 +28,12 @@ namespace SoccerWeb.Tests.Fake
             return new T();
         }
 
-        public void Update()
+        public void Update(T obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Save()
         {
             throw new NotImplementedException();
         }

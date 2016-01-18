@@ -10,8 +10,9 @@ namespace SoccerWeb.Repositories
         IQueryable<T> Get();
         T GetById(int id);
         void Add(T obj);
-        void Update();
+        void Update(T obj);
         void Delete(int Id);
+        void Save();
     }
 
     public class SqlRepository<T> : IRepository<T> where T : class, new()
@@ -33,13 +34,17 @@ namespace SoccerWeb.Repositories
         public virtual void Add(T obj)
         {
             teamsSet.Add(obj);
+            Save();
         }
 
         public virtual void Delete(int Id)
         {
             T item = GetById(Id);
-            teamsSet.Remove(item);
-            Update();
+            //teamsSet.Remove(item);
+            //Save();
+
+            _entities.Entry(item).State = EntityState.Deleted;
+            _entities.SaveChanges();
         }
 
         public virtual IQueryable<T> Get()
@@ -47,7 +52,13 @@ namespace SoccerWeb.Repositories
             return teamsSet;
         }
 
-        public virtual void Update()
+        public virtual void Update(T obj)
+        {
+            _entities.Entry(obj).State = EntityState.Modified;
+            Save();
+        }
+
+        public virtual void Save()
         {
             _entities.SaveChanges();
         }

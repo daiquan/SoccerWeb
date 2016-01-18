@@ -90,12 +90,11 @@ namespace SoccerWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TeamID,TeamName")] Team team)
+        public ActionResult Edit([Bind(Include = "TeamID,TeamName,LeagueID")] Team team)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(team).State = EntityState.Modified;
-                db.SaveChanges();
+                _teamservice.UpdateTeam(team);
                 return RedirectToAction("Index");
             }
             return View(team);
