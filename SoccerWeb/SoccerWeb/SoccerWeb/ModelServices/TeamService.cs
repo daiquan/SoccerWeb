@@ -51,11 +51,9 @@ namespace SoccerWeb.ModelServices
 
         public void DeleteTeam(int id)
         {
-            _repo.Delete(id);
-            //_repo.Save();
-            _repoRegistration.Delete(id);
-            //_repo.Save();
-            //_repoRegistration.Save();
+            _repoRegistration.DeleteEntity(id);
+            _repo.DeleteEntity(id);
+            _repo.Save();
         }
     }
 }

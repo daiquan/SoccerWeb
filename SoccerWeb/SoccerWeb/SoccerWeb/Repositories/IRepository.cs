@@ -12,18 +12,19 @@ namespace SoccerWeb.Repositories
         void Add(T obj);
         void Update(T obj);
         void Delete(int Id);
+        void DeleteEntity(int Id);
         void Save();
     }
 
     public class SqlRepository<T> : IRepository<T> where T : class, new()
     {
-        private TeamLeagueContext _entities = new TeamLeagueContext();
+        private TeamLeagueContext _entities;
         private readonly IDbSet<T> teamsSet;
 
-        public SqlRepository ()
+        public SqlRepository (TeamLeagueContext dbContext)
         {
+            _entities = dbContext;
             teamsSet = _entities.Set<T>();
-            _entities = _entities ?? new TeamLeagueContext();
         }
 
         public virtual T GetById(int id)
@@ -39,12 +40,8 @@ namespace SoccerWeb.Repositories
 
         public virtual void Delete(int Id)
         {
-            T item = GetById(Id);
-            //teamsSet.Remove(item);
-            //Save();
-
-            _entities.Entry(item).State = EntityState.Deleted;
-            _entities.SaveChanges();
+            DeleteEntity(Id);
+            Save();
         }
 
         public virtual IQueryable<T> Get()
@@ -61,6 +58,12 @@ namespace SoccerWeb.Repositories
         public virtual void Save()
         {
             _entities.SaveChanges();
+        }
+
+        public void DeleteEntity(int Id)
+        {
+            T item = GetById(Id);
+            _entities.Entry(item).State = EntityState.Deleted;
         }
     }
 

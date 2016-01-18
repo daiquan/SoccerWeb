@@ -14,7 +14,7 @@ namespace SoccerWeb.Installers
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            container.Register(Component.For<DbContext>().ImplementedBy<TeamLeagueContext>().LifestylePerWebRequest());
+            //container.Register(Component.For<DbContext>().ImplementedBy<TeamLeagueContext>().LifestylePerWebRequest());
         }
     }
 }
